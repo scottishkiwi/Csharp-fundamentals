@@ -1,0 +1,57 @@
+Reference type: 
+
+e.g var b = new Book("Grade"); 
+
+- space in memory stores a reference to the Book object
+
+Value type: (integers, floats, doubles, strings?)
+
+e.g var x = 3; 
+
+- space in memory stores the value of the integer 
+
+
+C# passes parameters to methods by value.
+
+
+The ref keyword: 
+
+- When passing reference values to another method, we always pass the value of the reference, rather than the reference itself. 
+- We can pass the reference itself using the ref keyword: 
+
+private void MethodName(ref Book book, string name)
+{
+
+}
+
+MethodName(ref book1, "new name"); 
+
+- When the book parameter arrives, it has been passed by reference 
+    - It is not a copy of the value that is in the variable
+    - Instead, we get a reference to the memory location to where that variable is stored 
+
+- This keyword is rare, won't be seen much
+
+The out keyword: 
+
+- Alternative to ref
+- Also passes by reference
+- Main difference, the compiler assumes the incoming reference has not been initialised 
+    - The out parameter must be initialised and assigned to (or it will error)
+
+
+Can press F12 on a type to identify if it is a class or a struct:
+
+- A class -> Reference type
+- A struct -> Value type
+
+This doesn't apply for Strings:
+- String is a class so it is a Reference type
+- But it behaves like a Value type
+    - Strings are immutable (they cannot change once they've been created)
+
+
+Garbage Collector: 
+
+- .NET keeps track of all of all objects in memory
+    - During runtime, it knows when there is no pointer using the object so it can run a Garbage Collection and deallocate that object

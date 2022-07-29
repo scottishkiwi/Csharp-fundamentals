@@ -1,0 +1,18 @@
+- A Class defines a new type of Object.
+- Each class has a Main method, but you want to ensure that the method isn't bloated
+- We want to seperate out (abstract out) the functionality to make it simpler to read 
+
+- We use the class keyword to instantiate a class, and each class is usually inside its own Namespace
+    - Without the namespace, the class is now in the global namespace
+    - Then, if someone creates a new class with the same name in the global namespace, it will conflict with our class 
+
+- Can have multiple Classes inside a namespace inside a file
+- Most developers follow a convention where we have one Class per file 
+
+- Cannot use the var keyword (implicit typing) for Class fields
+
+Accessing Classes: 
+
+- If we don't specify the access modifier on a class definition, it will default to internal
+    - This means, it can only be used inside the same project. 
+    - Instead we use public

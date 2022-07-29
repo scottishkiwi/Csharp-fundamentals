@@ -1,0 +1,94 @@
+Classes allow us to define new Reference Types.
+Methods and fields added to a Type are members of that Type. 
+
+
+Overloading Methods: 
+
+- In general, multiple methods should not use the same name inside of a Type
+- We can reuse method names because the C# compiler is looking at more than just the method names, it is looking at the method signature
+    - The signature consists of the method name and the parameter types, and number of parameters (not the return type)
+    - Two methods with the same name but different parameters are considered different methods
+- The C# compiler knows which method to invoke based on the argument that is provided 
+e.g 
+book.AddGrade(grade);
+book.AddGrade('A'); 
+
+- Can also overload constructors, as long as the method signature is unique 
+
+Properties: 
+
+- Similar to a field - can encapsulate state and store data for an object
+- Different syntax to fields, and some more powerful features  
+
+Long-hand syntax: 
+
+//field 
+private string name; 
+
+//property, not no parenthesis
+public string Name
+{
+    get{
+        return name;
+    }
+    set{
+        if(!String.IsNullOrEmpty(value))
+        {
+            name = value; // implicit variable, the incoming value that is being set
+        }
+    }
+}
+
+- A property represents a piece of state, and encapsulates it in an easy manner 
+    - This allows us to control what happens when code accesses the name or sets the name
+
+Short-hand syntax: 
+
+- Old syntax always needed the backing field (the field that sits behind the propert)
+- Microsoft said lets make this easy by allowing us to get rid of the backing field and the verbos get and set methods:
+
+public string Name
+{
+    get; set;
+}
+
+- This is known as an auto property
+- So whats the difference between having this and just a public field
+    - Tbh, very few differences
+    - Can specify access modifiers infront of the getter and setters: 
+
+public string Name
+{
+    get; 
+    private set; // code outside of the class this is defined in, cannot use the setter (more encapsulated)
+}
+
+
+readonly keyword: 
+
+- A field that can only be initialised or written to, inside the classes constructors
+- Allows us to assign values inside a constructor and be sure that the fields can never change 
+
+
+const keyword: 
+
+- A field that cannot be written to
+- Can also make the field public so it can be accessed outside of the class 
+    - No point using a property because it can never be set 
+- Const variable names are usually all upper case e.g: 
+
+public const string CATEGORY = "Science"; 
+
+- const fields are treated like static members of a class 
+    - i.e they are only accessible via the Type name of the class, not instances of the class (i.e objects)
+    - this makes sense as CATEGORY is a constant so will not change, will be the same value for every object, 
+    so no point having it accessible from each object instance
+
+e.g Book.CATEGORY; instead of var book = new Book(); book.CATEGORY; 
+
+- Can also be used outside of class members: 
+
+const int x = 3; 
+x++; //error, can't change the value 
+
+

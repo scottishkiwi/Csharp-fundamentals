@@ -1,0 +1,28 @@
+Non-nullable reference types:  (C# 8)
+
+- C# can look through our program and determine where their might be a null reference exception at runtime 
+- C# compiler now shows warnings when fields/variables are used but are not initialised 
+    - Warning not an error
+- Key point:
+    - When I'm working with reference types, I can make them non-nullable by default
+    - We can't use null where it isn't expected without a warning 
+
+But what if I really need to use a null value: 
+
+- Maybe I want to represent an empty value 
+- Can use a ?: 
+
+Book? book = new InMemoryBook(""); // valid
+Book? book = null; // valid
+
+- Can also do this in method parameters: 
+
+private static void EnterGrades(IBook? book)
+{
+    // use of book that includes checking for nulls 
+}
+
+Other things to look at: 
+
+- Generics
+- Asynchronous C#

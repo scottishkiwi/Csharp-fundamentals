@@ -1,0 +1,94 @@
+Events:
+
+- Another member that can be added to a class
+- Been around since the beginning but not used often
+- Tricky to understand
+- Still worth learning as certain Windows frameworks use them heavily 
+
+
+Delegate: 
+
+- Different from a class or struct
+- Defines what a method will look like (its shape/structure)
+    - What is the return type?
+    - What is the param type?
+    - How many params?
+
+- Want to be able to point variable or fields at a method that has the same structure, but different implementations
+
+// defined outside of class definition
+public delegate string WriteLogDelegate(string logMessage); 
+
+[Fact]
+public void WriteLogDelegateCanPointToMethod()
+{
+    WriteLogDelegate log; 
+
+    //log = new WriteLogDelegate(ReturnMessage); // passing in the method 
+    log = ReturnMessage; // this is the short hand of above
+    
+    var result = log("hello"); 
+    Assert.Equal("hello", result); 
+}
+
+string ReturnMessage(string message)
+{
+    return message; 
+}
+
+- The method name and parameter names do not need to match the delegate
+    - The param type and return type must match
+- So we can point any variable that is of the type WriteLogDelegate, to any method that returns a string and takes a string 
+- We can then envoke that method using the variable (log) with parentheses and providing the argument 
+
+Delegates can invoke multiple methods (multi cast): 
+
+- We assign a method to a variable of a delegate type: 
+
+WriteLogDelegate log = ReturnMessage;
+
+- But we can use the += operator here to add another method to be invoked with the log variable: 
+
+log += DifferentMessage; // Another function that returns and accepts a string (ie matches the delegate structure) 
+log("hello"); 
+
+- When we invoke the variable (log), we could be invoking multiple methods 
+    - They dont have to have the same name, or the same param names, or the same functionality
+    - They just need to match the delegate type structure 
+
+
+Events: 
+
+- Use case: 
+    - We want to keep track of some sort of event in the code
+    - We can define a delegate, at runtime the delegate can be pointed to different methods that are available somewhere else in the app
+    - If we invoke the delegate at the correct time, then the required methods will run without us having to worry about what they are
+
+- When defining the delegate, we want to use the C# standard for Events: 
+    - object sender (base Type for everything so will accept anything)
+    - EventArgs args  
+
+In the class, we set up the delegate:
+
+public delegate void GradeAddedDelegate(object sender, EventArgs args);
+
+- Then we add an event field in the class of the Type of the delegate: 
+
+public event GradeAddedDelegate GradeAdded; 
+
+- Then we invoke the delegate method wherever the event is occuring : 
+
+GradeAdded(this, new EventArgs()); 
+
+- Then from the code outside of the Book class, I can configure a method that is a delgate of the GradeAdded event, as long as it matches
+ the delegate structure:
+
+static void OnGradeAdded(object sender, EventArgs e){
+    // custom code 
+}
+
+- And then I add the method to the delegate (which can handle multiple methods) so that my custom event code is called when GradeAdded() is invoked in the Book class:
+
+book.GradeAdded += OnGradeAdded;
+
+- This method is completely decoupled from the Book class

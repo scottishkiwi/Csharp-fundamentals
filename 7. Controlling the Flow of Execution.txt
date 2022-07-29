@@ -1,0 +1,144 @@
+Varieties of for loops: 
+
+foreach(var grade in grades){
+    result.Low = Math.Min(grade, result.Low); 
+    result.High = Math.Max(grade, result.High);
+    result.Average += grade; 
+}
+-------
+
+- do, while loops will always execute once before it reaches the while statement to determine the condition for future execution:
+
+var index =0; 
+do{
+    result.Low = Math.Min(grades[index], result.Low); 
+    result.High = Math.Max(grades[index], result.High);
+    result.Average += grades[index]; 
+    index++; 
+}while(index < grades.Count);
+-------
+
+- while loops have the condition at the top of the loop rather than the end, so will only execute if the condition is true:
+
+
+while(index < grades.Count){
+    result.Low = Math.Min(grades[index], result.Low); 
+    result.High = Math.Max(grades[index], result.High);
+    result.Average += grades[index]; 
+    index++; 
+}
+------
+
+- for loop, where we declare the index variable inside the brackets
+
+for(var i=0; i<grades.Count; i++)
+{
+    result.Low = Math.Min(grades[i], result.Low); 
+    result.High = Math.Max(grades[i], result.High);
+    result.Average += grades[i]; 
+}
+
+
+Jumping statements:
+
+- Allow us to jump over code to reach some other line of code
+- Makes it hard to follow the logic of a method that uses jumping statements
+
+break: 
+
+- Inside a loop, we have a specific condition that means we need to stop the execution of the loop
+- We break out of the loop
+
+for(var i=0; i<grades.Count; i++)
+{
+    if(grades[i] == 42.1)
+    {
+        break;
+    }
+    result.Low = Math.Min(grades[i], result.Low); 
+    result.High = Math.Max(grades[i], result.High);
+    result.Average += grades[i]; 
+}
+
+continue: 
+
+- Similar to break, except instead of breaking from the loop entirely, we go to the next iteration of the loop
+
+
+Advanced switch statement functionality:
+
+switch(result.Average)
+{
+    case var d when d >= 90.0:
+        result.Letter = 'A';
+        break; 
+    case var d when d >= 80.0:
+        result.Letter = 'B';
+        break; 
+    case var d when d >= 70.0:
+        result.Letter = 'C';
+        break; 
+    case var d when d >= 60.0:
+        result.Letter = 'D';
+        break; 
+    default:
+        result.Letter = 'F';
+        break; 
+}
+
+- We can declare a variable d that represents the average result
+- We can then use the when keyword to check a condition based on the value in d
+
+
+Nameof keyword: 
+
+- Returns the string value of the variable
+- Good to use inside exception messages as it forces us to change the variable name, if the variable name changes in the code
+    - Clever
+
+e.g 
+
+if(grade <= 100 && grade >= 0)
+{
+    grades.Add(grade);
+}else
+{
+    throw new ArgumentException($"Invalid {nameof(grade)}");
+}
+             
+
+Try Catch: 
+
+- Good in a use case where the exception shouldn't crash the program, but still warn the user that something went wrong
+- Can catch all exceptions:
+
+try{
+    var grade = double.Parse(input);
+    book.AddGrade(grade);  
+}
+catch(Exception ex) 
+{
+    Console.WriteLine(ex.Message); 
+}
+
+- Usually better to only catch specific exceptions that we know how to handle
+- Can also stack multiple catch statements for different exceptions
+- Can also use a finally block which will always run at the end of the try statement
+    - Good for cleaning up after some code execution e.g closing a file 
+
+try{
+    var grade = double.Parse(input);
+    book.AddGrade(grade);  
+}
+catch(ArgumentException ex)
+{
+    Console.WriteLine(ex.Message); 
+}
+catch(FormatException ex)
+{
+    Console.WriteLine(ex.Message); 
+}
+finally
+{
+    ....
+}

@@ -1,0 +1,15 @@
+Creating a Solution file: 
+
+- Want to avoid having to build multiple projects and testing specific test projects
+- Solution files keep tracks of multiple projects
+    - Can open Solution file and all projects are loaded in 
+    - Can 'dotnet build' a solution and will build all the projects
+- We use 'dotnet new sln' in the parent directory
+
+Adding projects to a Solution file: 
+
+- We add projects using the dotnet sln add command and specifying the .csproj file of the project
+- 'dotnet sln add src\GradeBook\GradeBook.csproj'
+
+Now we can run the dotnet build and dotnet test commands from the parent directory that holds the src and test directores 
+and .sln files.

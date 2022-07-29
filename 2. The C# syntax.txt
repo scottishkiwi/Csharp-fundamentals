@@ -1,0 +1,53 @@
+- The var keyword can be used as a generic variable, the type is infered based on the value assigned. 
+
+Arrays: 
+
+double[] numbers; 
+
+numbers[0] = 12.7; //this will error because the numbers array hasn't been assigned a value
+
+- The array needs to be initialised: 
+
+double[] numbers = new double[10]; //need to specify the type of the elements in the array, and the size of the array 
+
+- If we already know the values of the array we can use the following syntax: 
+
+var numbers = new doublep[3]{ 12.7, 10.3, 6.11 } //can leave the underlying type of the array and the array size number out of the syntax
+var numbers = new [] { 12.7, 10.3, 6.11 } 
+
+Loops: 
+
+var result = 0.0; 
+
+foreach(double number in numbers)
+{
+    result += number;
+}
+Console.WriteLine(result); 
+
+Lists:
+
+List<double> grades = new List<double>(); 
+
+- This has more flexibility than arrays as we don't need to specify the size
+- The parentheses invokes the List constructor
+- We can still use the [] syntax to get the element at a certain index 
+
+- BUT the namespace needs to be specified so we can access the List/Data Structures from the Generic Collections namespace: 
+
+using System.Collections.Generic;
+
+- We now have access to the List methods such as: 
+
+grades.Add(65.6); 
+grades.Count; //Note, not a method, an attribute
+
+Static keyword: 
+
+- A method or field that is not associated with an object instance, it is associated with the type they are defined inside of
+    - You cannot access the field or method via an instance of the object e.g var p = new Program(); p.Main();
+    - We have to use the Class name e.g Program.Main();
+
+A public field/method in a class: 
+
+- Always has an uppercase name

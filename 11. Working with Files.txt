@@ -1,0 +1,29 @@
+Files:
+
+- We use the File object from System.IO
+- File provides methods that allow us to create a file, add text to a file and close a file 
+- Issues arise when we have an errors when writing to a file or trying to write multiple times to the same file
+
+IDisposable: 
+
+- interface that is implemented by TextWriter, which is an abstract base class for StreamWriter
+    - TextWriter can write text into various streams (file system, in memory (string), over the network) 
+- IDisposable interface has one method: Dispose(); 
+    - Performs app defined tasks associated with freeing, releasing or resetting unmanaged resources 
+- Garbage Collection usually handles all of this
+    - Certain objects require resources to be cleaned up as soon as possible (sooner than Garbage Collection)
+    - e.g Files, we want the OS to immediately close the file and clean up so we can write to it again
+
+- Many objects will implement IDisposable to indicate that something needs to be cleaned up
+    - We can use the .Dispose() method
+
+Using keyword: 
+
+- We can wrap functionality in a using keyword that sets up the .Dispose() clean up for us
+    - Common pattern when we're working with a File, Socket (has some underlying resource) etc. that implements IDisposable 
+    - We can create the objects and dispose the objects as soon as we are done with them 
+
+using(var writer = File.AppendText($"{Name}.txt"))
+{
+    writer.WriteLine(grade); 
+}

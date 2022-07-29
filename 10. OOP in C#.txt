@@ -1,0 +1,169 @@
+Pillars of OOP: 
+
+1. Encapsulation
+
+- Hide details/members of code and decide what is accessible from outside of the class 
+- Access modifiers like public, private provide explicit control 
+
+2. Inheritance 
+
+- Re-use code across similar classes
+
+3. Polymorphism 
+
+- Objects of the same Type that can behave differently 
+
+
+Inheritance: 
+
+- Define a base class
+- We can inherit members from a base class into derived classes 
+    - Base class members are members of the derived class
+    - Means we can re-use code without writing it more than once (DRY) 
+
+e.g We have a Book class that needs a name, but we may need other types of objects that need names like Students, Schools 
+
+- So we create a Base class with the Name property:
+
+public class NamedObject
+{
+    public string Name{
+        get;
+        set;
+    }
+}
+
+public class Book : NamedObject
+{
+
+}
+
+- We can remove the Name property from Book as it will be inheriting the property from the Base class NamedObject
+
+Chaining constructors:
+
+public class NamedObject
+{
+    public NamedObject(string name)
+    {
+        Name = name; 
+    }
+}
+
+public class Book : NamedObject
+{
+    public Book(string name)
+    {
+        grades =....
+        Name = name; 
+    }
+}
+
+- The base class requires a certain field, so when we create a new Book we need to also tell the Book class how to 
+construct the base object as well
+    - The Base class requires a Name parameter and to do this we need to use the base keyword:
+
+base keyword:
+
+public class Book : NamedObject
+{
+    public Book(string name) : base(name)
+    {
+        grades =....
+        Name = name; 
+    }
+}
+
+- base accesses the constructor of the Base class
+- We can provide parameters from the derived class into the base constructor, via the base keyword
+
+
+Deriving from System.Object:
+
+- Every class has a base class (Object) without explicitly specifying the base class
+- Object is a class with a constructor
+    - It provides static methods (accessible via the Type e.g Object.ReferenceEquals())
+    - It also provides normal class methods like ToString(); 
+- object with a lower case 'o' maps to System.Object 
+
+
+Polymorphism scenario: 
+
+- Calling a method on an object that has differnt functionality 
+e.g calling AddGrade on a Book object may either: 
+
+1. Add the Grade to a List (in memory)
+2. Write the Grade to a File 
+
+- The key thing is that we don't know (or care) which is happening, we can just confidently call AddGrade on the Book 
+    - Kind of a form of encapsulation again
+
+
+Abstract class and abstract methods: 
+
+public abstract class Book
+{
+    public abstract void AddGrade(double grade); // abstract method
+}
+
+- We can define abstract classes and abstract methods as above
+    - The abstract method definition means that a class that inherits from the abstract class needs to have an AddGrade method, 
+    but we don't know the implementation 
+    - Similar to the base class, we need to inherit the abstract class and then use the base() keyword to ensure 
+    we satisfy the base classes constructor 
+- We then need to add the override keyword to the method that is being inherited from the abstract class: 
+
+public override void AddGrade(double grade)
+{
+    // code 
+}
+
+- We can only override abstract methods inherited from the abstract base class (and virtual methods ?)
+- This promotes Polymorphism because we can create different types of Book objects that inherit the abstract Book class
+    - Then each type of Book class is forced to implement AddGrade, and can do so in their own way based on the purpose of the class
+        e.g InMemoryBook, InFileBook
+    
+- Because the book types inherit from the Book abstract class, we can either refer to them with their exact class (e.g InMemoryBook)
+or just use Book, because they are technically all Books
+    - This means we can create generic code that is expecting a Book but doesn't care what type of Book it is
+
+
+Interface:
+
+- Another way to achieve encapsulation and polymorphism
+- Interfaces are pure (pure abstraction)
+    - They contain no implementation (unlike abstract classes)
+    - Only describes the members that should be available on a specific type
+- Naming convention, interfaces start with an uppercase I 
+- Interfaces are more common that abstract classes 
+
+public interface IBook
+{
+    void AddGrade(double grade);
+    Statistics GetStatistics(); 
+    string Name{
+        get;
+    }
+    event GradeAddedDelegate GradeAdded; 
+}
+
+- As we know, we cannot inherit from more than one base class
+    - We can specify 0 or more interfaces that we want to implement
+
+public class InMemoryBook : Book, IBook 
+{
+
+}
+
+- The C# compiler will complain if there are implementation details for methods that have also been inherited from the base class
+    - This is where we use the virtual keyword
+
+Virtual keyword:
+- Heres a method thats in the base class but a derived class may choose to override the implementation details 
+- An abstract method is implicity virtual
+    - The derived class NEEDS to provide implementation details and override this method
+- This can be added to properties and events too 
+
+- Inside the derived class, we need to use the override keyword on the method, event or property
+    - We are overriding the implementation in the base class 
+

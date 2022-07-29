@@ -1,0 +1,58 @@
+Why test: 
+
+- verify functionality
+- test edge cases 
+- we automate the testing to save manual testing effort
+- we will be using xUnit Test
+
+Folder structure: 
+
+- src folder with GradeBook project inside it
+- test folder with a seperate Unit Test project inside it
+    - Call the project GradeBook.Tests (convention)
+    - 'dotnet new xunit' (creates project inside folder)
+
+Test class structure: 
+
+- using Xunit; (to pull in Xunit namespace, provides the Types and APIs to interact with the testing framework)
+- we create testing methods inside a class
+- [Fact] -> attribute, little piece of data that is attached to the following method
+    - Xunit looks for methods that have Facts attached to identify a test method
+    - Non-test methods (e.g helper methods) would not have a Fact attribute so Xunit will ignore it
+- VS code has a test extenstion which allows us to execute unit tests directly from VS code 
+
+How to execute a test: 
+
+- 'dotnet test' from the CLI (inside the Test project) 
+
+How to tell framework about a pass or fail: 
+
+- We use the API provided by the Assert (from Xunit namespace)
+
+Test method structure: 
+
+1) arrange - arrange test data and values that will be used
+2) act - invoke a method to perform a computation/calculation that produces a result
+3) assert - assert something about the value from the act section 
+
+Naming Test Classes: 
+
+- If there is a Book class, we call the test class BookTests
+- Filename of class should always match class name
+
+Accessing classes from a different project: 
+
+- Need to access the class from the GradeBook project in our GradeBook.Test project
+- From the CLI: dotnet add [package (Nuget package) | reference (Project)]
+    - e.g dotnet add reference ../../src/GradeBook/GradeBook.csproj
+- This adds a new entry to the GradeBook.Tests.csproj file which references our GradeBook class
+- We may also need to add a Using statement to bring the package/project namespace into scope of the test class 
+    - In our case, we have used GradeBook.Tests as the namespace, which is a descendant of the GradeBook namespace so 
+    we already have acccess to everything from GradeBook
+
+Rounding issues: 
+
+- Expected value has a differnet number of decimal places than the actual value
+- Can add a precision value to the Asset.Equal() method: 
+
+Asset.Equal(85.6, result.Average, 1); // Checks only to one decimal place

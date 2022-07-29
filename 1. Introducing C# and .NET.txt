@@ -1,0 +1,51 @@
+C# code needs to be ran somehow, we do this using the .NET framework
+
+.NET Framework is old and Windows only. This is preinstalled on Windows and offered by Microsoft. 
+.NET Core is new and Open Source and runs on all Operating Systems. 
+
+.NET can be broken into two pieces: 
+
+CLR (Common Language Runtime)
+FCL (Framework Class Library) - .NET provides a library of code to perform common activities in C#
+
+The .NET SDK provides the .NET Runtime and the FCL. (hence Software Devlelopment Kit)
+
+.NET CLI (dotnet): 
+
+dotnet --info (shows version of SDK, shows runtime environment info)
+dotnet -h (shows all SDK commands that are available e.g build, test, new)
+
+Creating a new C# Project: 
+
+dotnet new <template> 
+- Lots of templates for different types of applications
+- Creates the basic project structure for the application 
+
+e.g dotnot new console (console template used for CLI applications)
+
+- Creates a .csproj file, .cs file (C# source code)
+
+dotnet run
+- looks for a .csproj file and uses the information to run the project
+- dotnet uses Nuget as a package system, allowing us to use features and code from other packages
+    - When my app needs a feature in a Nuget package, the csproj will keep track of this
+- run -> behind the scene, we are doing a dotnet restore, then a dotnet build (compiling cs code into a binary format that efficiently runs)
+    - This is called an assembly (output of dotnet build, containing the code in a binary format)
+    - Can try to run dll files without dotnet but it will complain that there is no runtime
+
+Structure of the C# class: 
+
+- Main method is the entry point to the application 
+- Takes an args array as an argument which holds the arguments passed in via the CLI when we are running the app 
+e.g  dotnet run Dan
+> Hello, Dan!
+- We do this using String Interpolation using $ infront of the string and then using {} for the variable:
+Console.WriteLine($"Hello, {args[0]}!");
+
+Debugging C#:
+
+- dotnet runtime will tell us the line of code where the error occured
+- can set a breakpoint (click on left side) on the line where the error occured
+    - The runtime engine will pause the program and allow us to analyse the state at the time of the breakpoint
+- Use Run > Debug menu in VS Code 
+- Can use multiple breakpoints 

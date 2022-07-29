@@ -1,0 +1,30 @@
+C:\Dev\Upskilling\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.exe
+C:\Dev\Upskilling\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.deps.json
+C:\Dev\Upskilling\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.runtimeconfig.json
+C:\Dev\Upskilling\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.dll
+C:\Dev\Upskilling\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.pdb
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.csproj.AssemblyReference.cache
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.AssemblyInfoInputs.cache
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.AssemblyInfo.cs
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.csproj.CoreCompileInputs.cache
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.dll
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\refint\GradeBook.dll
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.pdb
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.genruntimeconfig.cache
+C:\Dev\Upskilling\gradebook\src\GradeBook\obj\Debug\net6.0\ref\GradeBook.dll
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.exe
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.deps.json
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.runtimeconfig.json
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.dll
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\bin\Debug\net6.0\GradeBook.pdb
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.csproj.AssemblyReference.cache
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.GeneratedMSBuildEditorConfig.editorconfig
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.AssemblyInfoInputs.cache
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.AssemblyInfo.cs
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.csproj.CoreCompileInputs.cache
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.dll
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\refint\GradeBook.dll
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.pdb
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\GradeBook.genruntimeconfig.cache
+c:\Dev\Upskilling\C# Fundamentals Course\gradebook\src\GradeBook\obj\Debug\net6.0\ref\GradeBook.dll
